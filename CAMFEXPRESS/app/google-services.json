@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "330872729670",
+    "firebase_url": "https://camf-express-2f42e.firebaseio.com",
+    "project_id": "camf-express-2f42e",
+    "storage_bucket": "camf-express-2f42e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:330872729670:android:bceb7741bbf7d000ad1a47",
+        "android_client_info": {
+          "package_name": "com.desenvolvimento.camfexpress"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "330872729670-jkcdhea4uepskvh2ltq552sohm143ed0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoIDH7S7v6EaGfseRdl4zabKK5vwef3Xw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "330872729670-jkcdhea4uepskvh2ltq552sohm143ed0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
