@@ -4,33 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/design_default_color_primary_dark"
     tools:context=".activity.MainActivity">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        android:layout_width="385dp"
+        android:layout_height="322dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logocamf" />
+        app:srcCompat="@drawable/caminhao" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
-        android:layout_height="64dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@color/colorAccent"
+        android:background="@color/design_default_color_primary_dark"
         android:orientation="horizontal"
         android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
 
         <Button
             android:id="@+id/button"
@@ -38,10 +38,11 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="4dp"
             android:layout_weight="1"
-            android:background="@color/btnLogin"
+            android:background="@color/colorPrimaryDark"
             android:onClick="buttonCarreto"
             android:text="Sou Carreto"
-            android:textColor="#FFFFFF" />
+            android:textColor="@color/colorAccent"
+            android:textSize="24sp" />
 
         <Button
             android:id="@+id/button2"
@@ -49,25 +50,27 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
             android:layout_weight="1"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryDark"
             android:onClick="buttonCliente"
             android:text="Sou Cliente"
-            android:textColor="#FFFFFF" />
+            android:textColor="@color/colorAccent"
+            android:textSize="24sp" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/button6"
+    <TextView
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="115dp"
-        tools:layout_editor_absoluteY="92dp" />
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="50dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="CAMF EXPRESS"
+        android:textColor="@color/colorAccent"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="238dp"
-        tools:layout_editor_absoluteY="92dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
