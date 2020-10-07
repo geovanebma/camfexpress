@@ -4,45 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/plano_de_fundo"
     tools:context=".activity.VerificarNumero">
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
-        android:textColorHint="@color/colorAccent"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/numeroCelular"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Número Celular"
-            android:inputType="number"
-            android:textColor="#FFFFFF" />
-    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:background="@color/colorPrimaryDark"
+        android:layout_marginBottom="328dp"
+        android:background="@drawable/botoes_arredondados"
         android:onClick="verificarNumero"
         android:text="Avançar"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/numeroCelular" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/numeroCelular"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginBottom="80dp"
+        android:background="@drawable/borda_arredondada"
+        android:hint="Número Celular"
+        android:inputType="number"
+        android:maxLength="17"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@color/colorAccent"
+        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

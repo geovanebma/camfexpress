@@ -1,34 +1,42 @@
 {
   "project_info": {
-    "project_number": "330872729670",
-    "firebase_url": "https://camf-express-2f42e.firebaseio.com",
-    "project_id": "camf-express-2f42e",
-    "storage_bucket": "camf-express-2f42e.appspot.com"
+    "project_number": "813150590891",
+    "firebase_url": "https://camfexpress.firebaseio.com",
+    "project_id": "camfexpress",
+    "storage_bucket": "camfexpress.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:330872729670:android:bceb7741bbf7d000ad1a47",
+        "mobilesdk_app_id": "1:813150590891:android:e60977119334d36ab024ee",
         "android_client_info": {
-          "package_name": "com.desenvolvimento.camfexpress"
+          "package_name": "com.uber.cursoandroid.jamiltondamasceno.uber"
         }
       },
       "oauth_client": [
         {
-          "client_id": "330872729670-jkcdhea4uepskvh2ltq552sohm143ed0.apps.googleusercontent.com",
+          "client_id": "813150590891-pasjej16uehr582r2inu6u0cc6662ab2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.uber.cursoandroid.jamiltondamasceno.uber",
+            "certificate_hash": "1d794a08cffd366deebb0f5b1d8c1a6a766e47a0"
+          }
+        },
+        {
+          "client_id": "813150590891-eclqm3miqib8321t03c9p8ekt9kh3rft.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBoIDH7S7v6EaGfseRdl4zabKK5vwef3Xw"
+          "current_key": "AIzaSyAujZjzSdXwQvljNgWOWsbbgJ6RLvp97Ak"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "330872729670-jkcdhea4uepskvh2ltq552sohm143ed0.apps.googleusercontent.com",
+              "client_id": "813150590891-eclqm3miqib8321t03c9p8ekt9kh3rft.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
