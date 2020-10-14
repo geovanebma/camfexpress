@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/plano_de_fundo"
-    tools:context=".activity.TelaCadastroCliente">
+    tools:context="com.projeto.camfexpress.activity.TelaCadastroCliente">
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/cep"

@@ -9,7 +9,8 @@
         android:id="@+id/textRequisicaoNome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Jamilton Damasceno"
+        android:text="Nome Cliente"
+        android:textColor="#333333"
         android:textSize="18sp"
         android:textStyle="bold" />
 

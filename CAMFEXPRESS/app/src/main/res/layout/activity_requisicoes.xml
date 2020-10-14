@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.uber.cursoandroid.jamiltondamasceno.uber.activity.RequisicoesActivity">
+    tools:context="com.projeto.camfexpress.activity.RequisicoesActivity">
 
     <TextView
         android:id="@+id/textResultado"

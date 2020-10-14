@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/botoes_arredondados"
-    tools:context=".activity.EscolhaCarreto">
+    tools:context="com.projeto.camfexpress.activity.EscolhaCarreto">
 
     <TextView
         android:id="@+id/textView6"
