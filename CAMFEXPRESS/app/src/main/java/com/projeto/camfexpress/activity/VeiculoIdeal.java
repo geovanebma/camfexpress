@@ -84,6 +84,8 @@ public class VeiculoIdeal extends AppCompatActivity {
         cliente.putExtra("porte", "veiculo ideal");
         cliente.putExtra("ajudante", getIntent().getStringExtra("ajudante"));
         cliente.putExtra("seguro", getIntent().getStringExtra("seguro"));
+        System.out.println("ajudante: "+getIntent().getStringExtra("ajudante"));
+        System.out.println("seguro: "+getIntent().getStringExtra("seguro"));
         startActivity(cliente);
     }
 }

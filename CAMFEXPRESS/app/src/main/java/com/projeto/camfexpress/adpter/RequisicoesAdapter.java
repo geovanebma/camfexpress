@@ -66,7 +66,9 @@ public class RequisicoesAdapter extends RecyclerView.Adapter<RequisicoesAdapter.
             float distancia = LocalidadeMetragem.calcularDistancia(localCliente, localCarreto);
             String distanciaFormatada = LocalidadeMetragem.formatarDistancia(distancia);
             holder.distancia.setText(distanciaFormatada + "- aproximadamente");
-            if(requisicao.getDestino().getAjudante().equals("true")){
+
+            String ajudante = requisicao.getDestino().getAjudante();
+            if(ajudante.equals("true")){
                 holder.ajudante.setText("Precisa de ajudante: sim.");
             }else{
                 holder.ajudante.setText("Precisa de ajudante: não.");

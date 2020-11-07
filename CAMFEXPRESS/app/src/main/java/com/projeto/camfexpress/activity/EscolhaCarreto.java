@@ -3,6 +3,7 @@ package com.projeto.camfexpress.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.Switch;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,10 +12,10 @@ import com.projeto.camfexpress.R;
 
 public class EscolhaCarreto extends AppCompatActivity {
 
-    private Switch ajudantes;
-    private Switch seguro;
-    private String a;
-    private String s;
+    private CheckBox ajudantes;
+    private CheckBox seguro;
+    private String a = "";
+    private String s = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +24,22 @@ public class EscolhaCarreto extends AppCompatActivity {
 
         ajudantes = findViewById(R.id.necessarioAjudante);
         seguro = findViewById(R.id.Seguro);
-        a = ajudantes.toString();
-        s = seguro.toString();
+    }
 
-        System.out.println("Ajudantes: "+ajudantes.isChecked());
-        System.out.println("Seguro: "+seguro.isChecked());
+    public void onclickSeguro(View view){
+        if(((CheckBox) seguro).isChecked()){
+            s = "true";
+        }else{
+            s = "false";
+        }
+    }
+
+    public void onclickAjudante(View view){
+        if(((CheckBox) ajudantes).isChecked()){
+            a = "true";
+        }else{
+            a = "false";
+        }
     }
 
     //Botão para escolher veículos de porte de carga grande

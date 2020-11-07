@@ -486,6 +486,7 @@ public class ClienteActivity extends AppCompatActivity
 
                         destino.setSeguro(getIntent().getStringExtra("seguro"));
                         destino.setAjudante(getIntent().getStringExtra("ajudante"));
+                        System.out.println("Olha só: "+getIntent().getStringExtra("ajudante")+" "+getIntent().getStringExtra("seguro"));
 
                         LatLng localDestino = new LatLng(
                                 Double.parseDouble(destino.getLatitude()),
@@ -619,6 +620,9 @@ public class ClienteActivity extends AppCompatActivity
                 destino.setAltura(medidas.getAltura());
                 destino.setPeso(medidas.getPeso());
                 destino.setTipo(medidas.getTipo());
+
+                destino.setSeguro(getIntent().getStringExtra("seguro"));
+                destino.setAjudante(getIntent().getStringExtra("ajudante"));
 
                 LatLng localDestino = new LatLng(
                         Double.parseDouble(destino.getLatitude()),

@@ -86,36 +86,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/porteSimples" />
 
-    <Switch
+    <CheckBox
         android:id="@+id/necessarioAjudante"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:fontFamily="sans-serif"
-        android:text="Necessario ajudante"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorAccent"
-        android:textSize="18sp"
+        android:fontFamily="sans-serif-medium"
+        android:onClick="onclickAjudante"
+        android:text="Precisas de ajudante?"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/veiculoIdeal" />
+        app:layout_constraintTop_toBottomOf="@+id/Seguro" />
 
-    <Switch
+    <CheckBox
         android:id="@+id/Seguro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:fontFamily="sans-serif"
-        android:text="Seguro"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorAccent"
-        android:textSize="18sp"
+        android:fontFamily="sans-serif-medium"
+        android:onClick="onclickSeguro"
+        android:text="Precisas de seguro?"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/necessarioAjudante" />
+        app:layout_constraintTop_toBottomOf="@+id/veiculoIdeal" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
