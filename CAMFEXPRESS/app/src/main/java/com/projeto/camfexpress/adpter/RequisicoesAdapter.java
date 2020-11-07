@@ -9,10 +9,10 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.maps.model.LatLng;
-import com.uber.cursoandroid.jamiltondamasceno.uber.R;
-import com.projeto.camfexpress.helper.Local;
-import com.projeto.camfexpress.model.Requisicao;
-import com.projeto.camfexpress.model.Usuario;
+import com.projeto.camfexpress.R;
+import com.projeto.camfexpress.config.LocalidadeMetragem;
+import com.projeto.camfexpress.config.Requisicao;
+import com.projeto.camfexpress.config.Usuario;
 
 import java.util.List;
 
@@ -24,70 +24,72 @@ public class RequisicoesAdapter extends RecyclerView.Adapter<RequisicoesAdapter.
 
     private List<Requisicao> requisicoes;
     private Context context;
-    private Usuario motorista;
+    private Usuario carreto;
 
-    public RequisicoesAdapter(List<Requisicao> requisicoes, Context context, Usuario motorista) {
+    //Construtor
+    public RequisicoesAdapter(List<Requisicao> requisicoes, Context context, Usuario carreto) {
         this.requisicoes = requisicoes;
         this.context = context;
-        this.motorista = motorista;
+        this.carreto = carreto;
     }
 
+    //Cria o ViewHolder
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View item = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_requisicoes, parent, false);
         return new MyViewHolder( item ) ;
     }
 
+    //Organiza o ViewHolder
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        System.out.println("abs:"+position);
-
         Requisicao requisicao = requisicoes.get( position );
-        Usuario passageiro = requisicao.getPassageiro();
+        Usuario cliente = requisicao.getCliente();
 
-        System.out.println("Nome dele: "+passageiro.getNome()+" "+requisicao.getPassageiro().getNome());
-
-        if(passageiro.getNome().isEmpty()){
-            holder.nome.setText( passageiro.getNome() );
+        if(cliente.getNome().isEmpty()){
+            holder.nome.setText( cliente.getNome() );
         }else{
-            holder.nome.setText( passageiro.getNome() );
+            holder.nome.setText( cliente.getNome() );
         }
 
-        if(motorista!= null){
-
-            LatLng localPassageiro = new LatLng(
-                    Double.parseDouble(passageiro.getLatitude()),
-                    Double.parseDouble(passageiro.getLongetude())
+        if(carreto!= null){
+            LatLng localCliente = new LatLng(
+                    Double.parseDouble(cliente.getLatitude()),
+                    Double.parseDouble(cliente.getLongitude())
             );
 
-            LatLng localMotorista = new LatLng(
-                    Double.parseDouble(motorista.getLatitude()),
-                    Double.parseDouble(motorista.getLongetude())
+            LatLng localCarreto = new LatLng(
+                    Double.parseDouble(carreto.getLatitude()),
+                    Double.parseDouble(carreto.getLongitude())
             );
-            float distancia = Local.calcularDistancia(localPassageiro, localMotorista);
-            String distanciaFormatada = Local.formatarDistancia(distancia);
+
+            float distancia = LocalidadeMetragem.calcularDistancia(localCliente, localCarreto);
+            String distanciaFormatada = LocalidadeMetragem.formatarDistancia(distancia);
             holder.distancia.setText(distanciaFormatada + "- aproximadamente");
-
+            if(requisicao.getDestino().getAjudante().equals("true")){
+                holder.ajudante.setText("Precisa de ajudante: sim.");
+            }else{
+                holder.ajudante.setText("Precisa de ajudante: não.");
+            }
         }
-
     }
 
+    //Conta quantas requisições tem
     @Override
     public int getItemCount() {
         return requisicoes.size();
     }
 
+    //Recupera os valores do TextView
     public class MyViewHolder extends RecyclerView.ViewHolder{
-
-        TextView nome, distancia;
+        TextView nome, distancia, ajudante;
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
             nome = itemView.findViewById(R.id.textRequisicaoNome);
             distancia = itemView.findViewById(R.id.textRequisicaoDistancia);
-
+            ajudante = itemView.findViewById(R.id.textAjudante);
         }
     }
-
 }

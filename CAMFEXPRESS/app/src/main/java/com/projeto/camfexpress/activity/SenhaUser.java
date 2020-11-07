@@ -8,12 +8,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.uber.cursoandroid.jamiltondamasceno.uber.R;
+import com.projeto.camfexpress.config.ConfiguracaoFirebase;
+import com.projeto.camfexpress.R;
 
 public class SenhaUser extends AppCompatActivity {
 
@@ -28,24 +30,21 @@ public class SenhaUser extends AppCompatActivity {
         senha = findViewById(R.id.senha);
     }
 
+    //Verifica se a senha informada está correta
     public int contador = 1;
     public void verificarSenha(View view){
-        String numero = getIntent().getStringExtra("numero");
-
-        //Retirar depois - fixo *****************************
-        numero ="+5511945549457";
+        FirebaseAuth autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
+        FirebaseUser usuario_atual = autenticacao.getCurrentUser();
 
         DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference usuario_bd_senha = referencia.child("usuarios").child(numero).child("senha");
+        DatabaseReference usuario_bd_senha = referencia.child("usuarios").child(usuario_atual.getPhoneNumber()).child("senha");
 
         usuario_bd_senha.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                System.out.println(dataSnapshot.getValue()+" "+senha.getText().toString());
                 if(dataSnapshot.getValue().toString().equals(senha.getText().toString())){
                     String modalidade = getIntent().getStringExtra("modalidade");
                     String numero = getIntent().getStringExtra("numero");
-                    System.out.println("mod: "+modalidade);
                     enviarIntent(numero, modalidade);
                 }else{
                     if(contador == 3){
@@ -60,7 +59,6 @@ public class SenhaUser extends AppCompatActivity {
                     }
 
                     contador++;
-                    System.out.println(contador);
                 }
             }
 
@@ -70,8 +68,10 @@ public class SenhaUser extends AppCompatActivity {
             }
         });
     }
+
+    //Dependendo da modalidade, encaminha para um dos destinos
     public void enviarIntent(String numero, String modalidade){
-        System.out.println("modalidade: "+modalidade);
+
         if(modalidade.equals("Carreto") || modalidade == "Carreto"){
             Intent intent = new Intent(SenhaUser.this, RequisicoesActivity.class);
             intent.putExtra("modalidade", modalidade);

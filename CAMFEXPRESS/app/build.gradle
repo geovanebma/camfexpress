@@ -4,7 +4,7 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.0"
     defaultConfig {
-        applicationId "com.uber.cursoandroid.jamiltondamasceno.uber"
+        applicationId "com.projeto.camfexpress"
         minSdkVersion 18
         targetSdkVersion 29
         versionCode 1

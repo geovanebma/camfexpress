@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.uber.cursoandroid.jamiltondamasceno.uber", appContext.getPackageName());
+        assertEquals("com.projeto.camfexpress", appContext.getPackageName());
     }
 }

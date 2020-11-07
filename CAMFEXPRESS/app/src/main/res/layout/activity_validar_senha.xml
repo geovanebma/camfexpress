@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/plano_de_fundo"
-    tools:context="com.projeto.camfexpress.activity.ValidarSenha">
+    tools:context="com.projeto.camfexpress.activity.ValidarSMS">
 
     <TextView
         android:id="@+id/textView3"
@@ -16,6 +16,7 @@
         android:layout_marginTop="100dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="50dp"
+        android:fontFamily="sans-serif-medium"
         android:text="Enviamos uma senha de 6 digitos para o número informado, insira a seguir:"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
@@ -32,6 +33,7 @@
         android:layout_height="50dp"
         android:layout_marginBottom="32dp"
         android:background="@drawable/borda_arredondada"
+        android:fontFamily="sans-serif-medium"
         android:hint="__ __ __ __ __ __"
         android:inputType="number"
         android:maxLength="6"
@@ -49,7 +51,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="300dp"
-        android:background="@drawable/botoes_arredondados"
+        android:background="@color/colorPrimary"
+        android:fontFamily="sans-serif-medium"
         android:onClick="validarSMS"
         android:text="Validar SMS"
         android:textAlignment="center"

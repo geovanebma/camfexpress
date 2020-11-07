@@ -10,7 +10,12 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
-import com.uber.cursoandroid.jamiltondamasceno.uber.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.projeto.camfexpress.config.ConfiguracaoFirebase;
+import com.projeto.camfexpress.config.MedidasCarreto;
+import com.projeto.camfexpress.R;
 
 
 public class VeiculoIdeal extends AppCompatActivity {
@@ -37,6 +42,7 @@ public class VeiculoIdeal extends AppCompatActivity {
         confirmarMedidas = findViewById(R.id.confirmarMedidas);
     }
 
+    //Botão de aceitar os termos e condições de carga
     public void concordarTexto(View view){
         if(((CheckBox) checkBoxConcordancia).isChecked()){
             comprimento.setEnabled(true);
@@ -55,13 +61,29 @@ public class VeiculoIdeal extends AppCompatActivity {
         }
     }
 
+    //Ao confirmar as medidas da carga, é encaminhado a tela de Cliente para escolher o endereço
     public void confirmarMedidas(View view){
-        Intent passageiro = new Intent(VeiculoIdeal.this, PassageiroActivity.class);
-        passageiro.putExtra("medidaComprimento", comprimento.getText().toString());
-        passageiro.putExtra("medidaLargura", largura.getText().toString());
-        passageiro.putExtra("medidaAltura", altura.getText().toString());
-        passageiro.putExtra("medidaPeso", peso.getText().toString());
-        passageiro.putExtra("porte", "veiculo ideal");
-        startActivity(passageiro);
+        MedidasCarreto medidas = new MedidasCarreto();
+        medidas.setTipo("veiculo ideal");
+        medidas.setComprimento(comprimento.getText().toString());
+        medidas.setLargura(largura.getText().toString());
+        medidas.setAltura(altura.getText().toString());
+        medidas.setPeso(peso.getText().toString());
+
+        FirebaseAuth autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
+        FirebaseUser usuario_atual = autenticacao.getCurrentUser();
+        DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebaseDatabase();
+        DatabaseReference usuarios = firebaseRef.child("usuarios").child(usuario_atual.getPhoneNumber());
+        usuarios.child("carga").setValue(medidas);
+
+        Intent cliente = new Intent(VeiculoIdeal.this, ClienteActivity.class);
+        cliente.putExtra("medidaComprimento", comprimento.getText().toString());
+        cliente.putExtra("medidaLargura", largura.getText().toString());
+        cliente.putExtra("medidaAltura", altura.getText().toString());
+        cliente.putExtra("medidaPeso", peso.getText().toString());
+        cliente.putExtra("porte", "veiculo ideal");
+        cliente.putExtra("ajudante", getIntent().getStringExtra("ajudante"));
+        cliente.putExtra("seguro", getIntent().getStringExtra("seguro"));
+        startActivity(cliente);
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.uber.cursoandroid.jamiltondamasceno.uber">
+    package="com.projeto.camfexpress">
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -16,7 +16,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.projeto.camfexpress.activity.VeiculoIdeal"></activity>
+        <activity android:name="com.projeto.camfexpress.activity.TermosCondicoes"
+            android:label="@string/title_termos_condicoes"
+            android:parentActivityName="com.projeto.camfexpress.activity.MainActivity" />
+        <activity android:name="com.projeto.camfexpress.activity.VeiculoIdeal" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -43,7 +46,7 @@
             android:label="@string/padrao_numero"
             android:parentActivityName="com.projeto.camfexpress.activity.MainActivity" />
         <activity
-            android:name="com.projeto.camfexpress.activity.ValidarSenha"
+            android:name="com.projeto.camfexpress.activity.ValidarSMS"
             android:label="@string/padrao_sms"
             android:parentActivityName="com.projeto.camfexpress.activity.VerificarNumero" />
         <activity
@@ -53,15 +56,15 @@
         <activity
             android:name="com.projeto.camfexpress.activity.TelaCadastroCarretoDados"
             android:label="@string/padrao_carreto"
-            android:parentActivityName="com.projeto.camfexpress.activity.ValidarSenha" />
+            android:parentActivityName="com.projeto.camfexpress.activity.ValidarSMS" />
         <activity
             android:name="com.projeto.camfexpress.activity.TelaCadastroCliente"
             android:label="@string/padrao_cliente"
-            android:parentActivityName="com.projeto.camfexpress.activity.ValidarSenha" />
+            android:parentActivityName="com.projeto.camfexpress.activity.ValidarSMS" />
         <activity android:name="com.projeto.camfexpress.activity.RequisicoesActivity" />
         <activity
-            android:name="com.projeto.camfexpress.activity.PassageiroActivity"
-            android:label="@string/title_activity_passageiro"
+            android:name="com.projeto.camfexpress.activity.ClienteActivity"
+            android:label="@string/title_activity_cliente"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name="com.projeto.camfexpress.activity.EscolhaCarreto" />
         <activity android:name="com.projeto.camfexpress.activity.SenhaUser" />

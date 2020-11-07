@@ -11,9 +11,9 @@ import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
-import com.uber.cursoandroid.jamiltondamasceno.uber.R;
-import com.projeto.camfexpress.model.Usuario;
-import com.projeto.camfexpress.model.Validacoes;
+import com.projeto.camfexpress.R;
+import com.projeto.camfexpress.config.Usuario;
+import com.projeto.camfexpress.config.Validacoes;
 
 public class TelaCadastroCarretoDados extends AppCompatActivity {
 
@@ -72,6 +72,7 @@ public class TelaCadastroCarretoDados extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
     }
 
+    //Cadastra os dados do carreto
     public void buttonCadastrar(View view){
         Validacoes validacao = new Validacoes();
 
@@ -90,7 +91,6 @@ public class TelaCadastroCarretoDados extends AppCompatActivity {
         boolean verificar_senhas = senha.getText().toString().equals(confirmarSenha.getText().toString());
 
         if(nome_completo && data_nascimento && cpf_cnpj && cep_end && endereco_end && numero_residencial && bairro_end && cidade_end && estado_end && email_end && senha_end && confirmarSenha_end && verificar_senhas){
-            System.out.println("AAA");
             Intent receber_tipo_usuario = getIntent();
             String numero = receber_tipo_usuario.getStringExtra("numero");
             String modalidade = receber_tipo_usuario.getStringExtra("modalidade");
@@ -110,7 +110,7 @@ public class TelaCadastroCarretoDados extends AppCompatActivity {
                 carreto.setEmail(email.getText().toString());
                 carreto.setSenha(confirmarSenha.getText().toString());
                 carreto.setTipo("Carreto");
-                carreto.setAtivo("True");
+                carreto.setAtivo("true");
 
                 cadastrarCarreto(carreto);
             }
@@ -174,6 +174,7 @@ public class TelaCadastroCarretoDados extends AppCompatActivity {
         }
     }
 
+    //Encaminha para a tela de cadastrar os dados do veículo do carreto
     public void cadastrarCarreto(final Usuario usuario){
         usuario.setId(usuario.getCelular());
         usuario.salvar();

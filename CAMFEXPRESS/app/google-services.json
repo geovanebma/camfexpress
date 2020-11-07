@@ -1,42 +1,42 @@
 {
   "project_info": {
-    "project_number": "813150590891",
-    "firebase_url": "https://camfexpress.firebaseio.com",
-    "project_id": "camfexpress",
-    "storage_bucket": "camfexpress.appspot.com"
+    "project_number": "123928202644",
+    "firebase_url": "https://camf-8e3e1.firebaseio.com",
+    "project_id": "camf-8e3e1",
+    "storage_bucket": "camf-8e3e1.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:813150590891:android:e60977119334d36ab024ee",
+        "mobilesdk_app_id": "1:123928202644:android:b6a7da6f6cd1aa85bd1381",
         "android_client_info": {
-          "package_name": "com.uber.cursoandroid.jamiltondamasceno.uber"
+          "package_name": "com.projeto.camfexpress"
         }
       },
       "oauth_client": [
         {
-          "client_id": "813150590891-pasjej16uehr582r2inu6u0cc6662ab2.apps.googleusercontent.com",
+          "client_id": "123928202644-ebvc4gb7lk4ut5pcnm232tgs8ffttkde.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.uber.cursoandroid.jamiltondamasceno.uber",
+            "package_name": "com.projeto.camfexpress",
             "certificate_hash": "1d794a08cffd366deebb0f5b1d8c1a6a766e47a0"
           }
         },
         {
-          "client_id": "813150590891-eclqm3miqib8321t03c9p8ekt9kh3rft.apps.googleusercontent.com",
+          "client_id": "123928202644-0si3savukqkbft3541cjm0gk365mg718.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAujZjzSdXwQvljNgWOWsbbgJ6RLvp97Ak"
+          "current_key": "AIzaSyCBhtwQktUHyLKT40w0Gq4ZdOJoA1hyVeA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "813150590891-eclqm3miqib8321t03c9p8ekt9kh3rft.apps.googleusercontent.com",
+              "client_id": "123928202644-0si3savukqkbft3541cjm0gk365mg718.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

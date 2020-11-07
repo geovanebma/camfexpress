@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.google.android.material.textfield.TextInputEditText;
-import com.uber.cursoandroid.jamiltondamasceno.uber.R;
+import com.projeto.camfexpress.R;
 
 public class VerificarNumero extends AppCompatActivity {
 
@@ -27,6 +27,7 @@ public class VerificarNumero extends AppCompatActivity {
         numeroCelular.addTextChangedListener(transformarNumero);
     }
 
+    //Recebe o número e encaminha para a tela de validar o sms
     public void verificarNumero(View view){
         String numero = numeroCelular.getText().toString().replace("-", "").replace("(", "").replace(")", "").replace(" ", "");
 
@@ -36,10 +37,9 @@ public class VerificarNumero extends AppCompatActivity {
             return;
         }
 
-        Intent intent = new Intent(VerificarNumero.this, ValidarSenha.class);//ValidarSenha.class
+        Intent intent = new Intent(VerificarNumero.this, ValidarSMS.class);//ValidarSMS.class
         intent.putExtra("numero", numero);
         String modalidade = getIntent().getStringExtra("modalidade");
-        System.out.println("mod1: "+modalidade);
         intent.putExtra("modalidade", modalidade);
         startActivity(intent);
     }

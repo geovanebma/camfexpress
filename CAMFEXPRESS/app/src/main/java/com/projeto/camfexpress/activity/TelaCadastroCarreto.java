@@ -11,9 +11,9 @@ import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
-import com.uber.cursoandroid.jamiltondamasceno.uber.R;
-import com.projeto.camfexpress.model.Validacoes;
-import com.projeto.camfexpress.model.Veiculo;
+import com.projeto.camfexpress.R;
+import com.projeto.camfexpress.config.Validacoes;
+import com.projeto.camfexpress.config.Veiculo;
 
 public class TelaCadastroCarreto extends AppCompatActivity {
 
@@ -52,6 +52,7 @@ public class TelaCadastroCarreto extends AppCompatActivity {
         peso.addTextChangedListener(mtw_peso);
     }
 
+    //Botão para cadastrar o veículo
     public void cadastrarCarretoVeiculo(View view){
         Validacoes validacao = new Validacoes();
         boolean placa_valid = validacao.valorENulo(placa.getText().toString());
@@ -95,6 +96,7 @@ public class TelaCadastroCarreto extends AppCompatActivity {
         }
     }
 
+    //Encaminha para a tela de requisições
     public void testeCadastro(Veiculo veiculo){
         String numero = getIntent().getStringExtra("numero");
         veiculo.salvar(numero);

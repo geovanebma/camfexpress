@@ -15,27 +15,24 @@ import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.uber.cursoandroid.jamiltondamasceno.uber.R;
+import com.projeto.camfexpress.R;
 import com.projeto.camfexpress.adpter.RequisicoesAdapter;
 import com.projeto.camfexpress.config.ConfiguracaoFirebase;
-import com.projeto.camfexpress.helper.RecyclerItemClickListener;
-import com.projeto.camfexpress.helper.UsuarioFirebase;
-import com.projeto.camfexpress.model.Requisicao;
-import com.projeto.camfexpress.model.Usuario;
+import com.projeto.camfexpress.config.RecyclerItemClickListener;
+import com.projeto.camfexpress.config.UsuarioFirebase;
+import com.projeto.camfexpress.config.Requisicao;
+import com.projeto.camfexpress.config.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +47,7 @@ public class RequisicoesActivity extends AppCompatActivity {
     private DatabaseReference firebaseRef;
     private List<Requisicao> listaRequisicoes = new ArrayList<>();
     private RequisicoesAdapter adapter;
-    private Usuario motorista;
+    private Usuario carreto;
 
     private LocationManager locationManager;
     private LocationListener locationListener;
@@ -61,9 +58,25 @@ public class RequisicoesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_requisicoes);
 
-        inicializarComponentes();
+        getSupportActionBar().setTitle("Requisições");
 
-        //Recuperar localizacao do usuário
+        //Configura componentes
+        recyclerRequisicoes = findViewById(R.id.recyclerRequisicoes);
+        textResultado = findViewById(R.id.textResultado);
+
+        //Configurações iniciais
+        carreto = UsuarioFirebase.getDadosUsuarioLogado();
+        autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
+        firebaseRef = ConfiguracaoFirebase.getFirebaseDatabase();
+
+        //Configurar RecyclerView
+        adapter = new RequisicoesAdapter(listaRequisicoes, getApplicationContext(), carreto );
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerRequisicoes.setLayoutManager( layoutManager );
+        recyclerRequisicoes.setHasFixedSize(true);
+        recyclerRequisicoes.setAdapter( adapter );
+
+        recuperarRequisicoes();
         recuperarLocalizacaoUsuario();
     }
 
@@ -73,15 +86,12 @@ public class RequisicoesActivity extends AppCompatActivity {
         verificaStatusRequisicao();
     }
 
+    //Verifica em qual status da requisição se encontra no momento
     private void verificaStatusRequisicao(){
-
         Usuario usuarioLogado = UsuarioFirebase.getDadosUsuarioLogado();
         DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebaseDatabase();
-
         DatabaseReference requisicoes = firebaseRef.child("requisicoes");
-
-        Query requisicoesPesquisa = requisicoes.orderByChild("motorista/id")
-                .equalTo( usuarioLogado.getId() );
+        Query requisicoesPesquisa = requisicoes.orderByChild("carreto/id").equalTo( usuarioLogado.getId() );
 
         requisicoesPesquisa.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -93,10 +103,10 @@ public class RequisicoesActivity extends AppCompatActivity {
                     if( requisicao.getStatus().equals(Requisicao.STATUS_A_CAMINHO)
                             || requisicao.getStatus().equals(Requisicao.STATUS_VIAGEM)
                             || requisicao.getStatus().equals(Requisicao.STATUS_FINALIZADA)){
-                        motorista = requisicao.getMotorista();
-                        abrirTelaCorrida(requisicao.getId(), motorista, true);
+                        carreto = requisicao.getCarreto();
+                        String tipo = requisicao.getDestino().getTipo();
+                        abrirTelaCorrida(requisicao.getId(), carreto, true, tipo);
                     }
-
                 }
             }
 
@@ -105,13 +115,11 @@ public class RequisicoesActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
+    //Verifica e recupera a localização do usuário
     private void recuperarLocalizacaoUsuario() {
-
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
@@ -122,19 +130,18 @@ public class RequisicoesActivity extends AppCompatActivity {
 
                 //Atualizar GeoFire
                 UsuarioFirebase.atualizarDadosLocalizacao(
-                        location.getLatitude(),
-                        location.getLongitude()
+                    location.getLatitude(),
+                    location.getLongitude()
                 );
 
                 if( !latitude.isEmpty() && !longitude.isEmpty() ){
-                    motorista.setLatitude(latitude);
-                    motorista.setLongetude(longitude);
+                    carreto.setLatitude(latitude);
+                    carreto.setLongitude(longitude);
 
                     adicionaEventoCliqueRecyclerView();
                     locationManager.removeUpdates(locationListener);
                     //adapter.notifyDataSetChanged();
                 }
-
             }
 
             @Override
@@ -162,16 +169,16 @@ public class RequisicoesActivity extends AppCompatActivity {
                     locationListener
             );
         }
-
-
     }
 
+    //Configura o botão de sair
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
+    //Cria a ação do botão sair
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -185,40 +192,18 @@ public class RequisicoesActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void abrirTelaCorrida(String idRequisicao, Usuario motorista, boolean requisicaoAtiva){
+    //Ao confirmar, é aberto a tela de corrida com o mapa
+    private void abrirTelaCorrida(String idRequisicao, Usuario carreto, boolean requisicaoAtiva, String tipo){
         Intent i = new Intent(RequisicoesActivity.this, CorridaActivity.class );
         i.putExtra("idRequisicao", idRequisicao );
-        i.putExtra("motorista", motorista );
+        i.putExtra("carreto", carreto );
         i.putExtra("requisicaoAtiva", requisicaoAtiva );
+        i.putExtra("porte", tipo );
         startActivity( i );
     }
 
-    private void inicializarComponentes(){
-
-        getSupportActionBar().setTitle("Requisições");
-
-        //Configura componentes
-        recyclerRequisicoes = findViewById(R.id.recyclerRequisicoes);
-        textResultado = findViewById(R.id.textResultado);
-
-        //Configurações iniciais
-        motorista = UsuarioFirebase.getDadosUsuarioLogado();
-        autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
-        firebaseRef = ConfiguracaoFirebase.getFirebaseDatabase();
-
-        //Configurar RecyclerView
-        adapter = new RequisicoesAdapter(listaRequisicoes, getApplicationContext(), motorista );
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerRequisicoes.setLayoutManager( layoutManager );
-        recyclerRequisicoes.setHasFixedSize(true);
-        recyclerRequisicoes.setAdapter( adapter );
-
-        recuperarRequisicoes();
-
-    }
-
+    //Evento ao clicar em alguma das requisições
     private void adicionaEventoCliqueRecyclerView(){
-
         //Adiciona evento de clique no recycler
         recyclerRequisicoes.addOnItemTouchListener(
                 new RecyclerItemClickListener(
@@ -228,7 +213,8 @@ public class RequisicoesActivity extends AppCompatActivity {
                             @Override
                             public void onItemClick(View view, int position) {
                                 Requisicao requisicao = listaRequisicoes.get(position);
-                                abrirTelaCorrida(requisicao.getId(), motorista, false);
+                                String tipo = requisicao.getDestino().getTipo();
+                                abrirTelaCorrida(requisicao.getId(), carreto, true, tipo);
                             }
 
                             @Override
@@ -246,6 +232,7 @@ public class RequisicoesActivity extends AppCompatActivity {
 
     }
 
+    //Verifica se tem alguma requisição, se houver, coloca na tela e verifica qual foi o porte de veículo escolhido pelo cliente, se caber com as descrições do carreto atual, essas requisições aparecerão na tela dele
     private void recuperarRequisicoes(){
         //DatabaseReference requisicoes = firebaseRef.child("requisicoes");
         DatabaseReference requisicoes = firebaseRef;
@@ -304,17 +291,17 @@ public class RequisicoesActivity extends AppCompatActivity {
                                     DataSnapshot usuariosRef = dataSnapshot.child("usuarios").child(usuarioAtual.getCelularUsuario());
                                     verificarMedidas(usuariosRef, novo_comprimento, novo_largura, novo_altura, novo_peso, requisicao);
                                     break;
+                                default:
+                                    Toast.makeText(RequisicoesActivity.this, "No momento, não temos um veículo adequado para transportar sua carga.", Toast.LENGTH_SHORT).show();
                             }
                         }else{
-                            Toast.makeText(RequisicoesActivity.this, "Dados incorretos", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(RequisicoesActivity.this, "Dados incorretos", Toast.LENGTH_SHORT).show();
                         }
-
-                        System.out.println(listaRequisicoes);
                     }
 
                     adapter.notifyDataSetChanged();
                 }else{
-                    Toast.makeText(RequisicoesActivity.this, "Dados incorretos", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(RequisicoesActivity.this, "Dados incorretos", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -326,11 +313,7 @@ public class RequisicoesActivity extends AppCompatActivity {
 
     }
 
-    public static FirebaseUser getUsuarioAtual(){
-        FirebaseAuth usuario = ConfiguracaoFirebase.getFirebaseAutenticacao();
-        return usuario.getCurrentUser();
-    }
-
+    //Lógica Paraconsistente para verificar o tamanho do veículo se é compatível
     public void verificarMedidas(final DataSnapshot dataSnapshot, final int comprimento, final int largura, final int altura, final int peso, final Requisicao requisicao){
         DataSnapshot valores = dataSnapshot;
         int comprimento_int = Integer.parseInt(valores.child("veiculo").child("comprimento").getValue().toString());
@@ -342,12 +325,9 @@ public class RequisicoesActivity extends AppCompatActivity {
             listaRequisicoes.add( requisicao );
             textResultado.setVisibility( View.GONE );
             recyclerRequisicoes.setVisibility( View.VISIBLE );
-            System.out.println("Sinalizador 1");
-            System.out.println(listaRequisicoes);
         } else {
             textResultado.setVisibility( View.VISIBLE );
             recyclerRequisicoes.setVisibility( View.GONE );
-            System.out.println("Sinalizador 2");
         }
     }
 }

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/borda_arredondada"
     android:orientation="vertical"
     android:padding="16dp">
 
@@ -9,6 +10,7 @@
         android:id="@+id/textRequisicaoNome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
         android:text="Nome Cliente"
         android:textColor="#333333"
         android:textSize="18sp"
@@ -18,6 +20,15 @@
         android:id="@+id/textRequisicaoDistancia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
         android:text="0 km- aproximadamente"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/textAjudante"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:text="Precisa de ajudante: "
         android:textSize="12sp" />
 </LinearLayout>

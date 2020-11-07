@@ -12,9 +12,9 @@ import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthProvider;
-import com.uber.cursoandroid.jamiltondamasceno.uber.R;
-import com.projeto.camfexpress.model.Usuario;
-import com.projeto.camfexpress.model.Validacoes;
+import com.projeto.camfexpress.R;
+import com.projeto.camfexpress.config.Usuario;
+import com.projeto.camfexpress.config.Validacoes;
 
 public class TelaCadastroCliente extends AppCompatActivity {
 
@@ -74,6 +74,7 @@ public class TelaCadastroCliente extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
     }
 
+    //Cadastra os dados do cliente
     public void buttonCadastrar(View view){
         Validacoes validacao = new Validacoes();
 
@@ -112,7 +113,7 @@ public class TelaCadastroCliente extends AppCompatActivity {
                 cliente.setEmail(email.getText().toString());
                 cliente.setSenha(confirmarSenha.getText().toString());
                 cliente.setTipo("Cliente");
-                cliente.setAtivo("True");
+                cliente.setAtivo("true");
                 cliente.setSms(codigo_sms);
 
                 cadastrarCliente(cliente);
@@ -151,6 +152,7 @@ public class TelaCadastroCliente extends AppCompatActivity {
         }
     }
 
+    //Encaminha para a tela de escolher o carreto
     public void cadastrarCliente(final Usuario usuario){
         usuario.setId(usuario.getCelular());
         usuario.salvar();
