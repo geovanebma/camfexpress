@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.projeto.camfexpress.activity.TermosCondicoes">
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Termos e condições de uso."
+        android:textColor="#333333"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/termos"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="
+            \n As diretrizes estabelecidas pelo aplicativo para o cadastro do veículo, sua classe, localização e entre outros, será com base nas leis nacionais do mercado de frete e com consciência no bem estar e na qualidade de transporte.
+            \n
+            \n Atendendo os mais diversos setores e transportando os mais variados tipos de cargas, os transportes descritos como motoristas e fretes, as pequenas cargas, podem ser realizados através dos mais diversos veículos, com tamanhos e portes variados, bem como caminhões pequenos e utilitários, podendo assim operar com volumes fracionados, variando de acordo com a mercadoria e preço.
+            \n
+            \n É determinado a todos os motoristas parceiros:
+            \n
+            \n •	Possuam modelos utilitários com no máximo 9 anos de uso;
+            \n
+            \n •	Documentação do veículo e do motorista elegível as leis do país;
+            \n
+            \n •	Inspeção e Laudo cautelar do veículo alegando condições de trabalho;
+            \n
+            \n •	Veículo devidamente equipado com cintas de seguranças, e proteção plástica ou de material adequado a proteção de todo tipo determinado de carga;
+            \n
+            \n •	Higiene do veículo, e da caçamba semanalmente;
+            \n
+            \n •	Equipamento OBRIGATÓRIO DE LOCALIZAÇÃO (Celulares, Tablets) para que tenhamos controle de localização de cada motorista;
+            \n
+            \n •	A cada semestre todos os motoristas passarão por uma rigorosa inspeção de condição de trabalho tanto psicológica, e estado de veículo.
+            \n
+            \n Com estas diretrizes sendo aceitas pelo motorista é possível ser enviado o cadastro onde será solicitada as documentações e analisadas com breve retorno de aceitação do parceiro.
+            \n
+            \n Gerenciamento
+            \n
+            \n Como parte, o gerenciamento é fundamental para a administração do negócio, o que leva a encontrar soluções para os problemas encontrados, um destes é, quando entrarmos na PlayStore e buscamos por qualquer aplicativo, temos uma parte específica que são os comentários deixados pelos clientes ou seja as avaliações. Através disso, podemos entender em como está sendo os projetos que são parecidos com a aplicação aqui proposta, um levantamento de dados e análise simplificada de mercado, verificar o que o cliente pede e suas sugestões de melhoria sobre os nossos concorrentes. A princípio, somos uma equipe com quatro (04) desenvolvedores e analista, cada um focado em seus objetivos; desde levantamento de dados tratando de business inteligence, como o refinamento de algoritmo do software, criptografia de dados com relação a proteção das informações dos usuários cadastrados na plataforma e até o plano de marketing, para divulgação e download do aplicativo. As possibilidades de crescimento são grandes e assim, o time se preocupa com a administração de gastos e como também a administração dos recursos para futuros investimentos.
+            \n
+            \n Cenário e Legislação
+            \n
+            \n Conforme análise de campo, pode-se encontrar os mais diversos veículos que podem exercer o serviço e assim trabalhar na função como frete e/ou motorista, bastando para o transportador o transporte em si e uma carteira de habilitação, muitas vezes efetuado de forma informal Acima de tudo é um serviço indispensável por mais que se trate de uma pequena mudança, ou um grande transporte de um munícipio a outro. Foi possível encontrar em mais diversos locais as tais placas pintadas em veículos e como experiência, tendo o local de fala de um usuário que precisou do serviço recentemente, podemos contar também com o amigo que possui um carro de carga pequena que pôde realizar a mudança, fazendo assim várias viagens para concluir toda a demanda que necessitava para transportar moveis e objetos de um lugar para o outro.
+            \n
+            \n Assim a Lei flexibiliza para os autônomos a exercer a função tanto em frente como motorista, tendo apenas que seguir com apenas algumas das exigências legais:
+            \n
+            \n I.	Para a pessoa Jurídica - Empresa terá que fazer um requerimento junto ao Registro Nacional de Transportes Rodoviários para se registrar e só então poderá atuar nesse mercado.
+            \n
+            \n II.	De acordo com guia do TRC qualquer forma de abrir uma empresa deste porte sem a autorização deste órgão pode causar sérios problemas ao empreendedor.
+            \n
+            \n III.	O instrumento legal que institui o Registro Nacional de Transportadores Rodoviários de Carga - RNTRC é a Lei 11.442 e a Resolução Nº 3.336, de 08 de dezembro de 2009, da ANTT, que determina que o exercício da atividade de transporte rodoviário de carga, por conta de terceiros e mediante remuneração, depende de prévio registro do transportador no RNTRC, administrado pela ANTT. Vale ressaltar que o exercício da atividade de transporte de carga própria independe de registro no RNTRC. O Transporte de Carga Própria é identificado quando a Nota Fiscal dos produtos tem como emitente ou destinatário a empresa, entidade ou indivíduo proprietário ou arrendatário do veículo.
+            \n
+            \n No caso de pessoa jurídica, ou seja, empresa ou cooperativa de transporte de carga, a documentação necessária para realizar o registro é a seguinte:
+            \n
+            \n •	 Comprovante de Inscrição e Situação Cadastral: Cartão CNPJ ativo constando o Transporte Rodoviário de Cargas como sua atividade principal;
+            \n
+            \n •	 Contrato Social da Matriz da Empresa ou Estatuto da Cooperativa;
+            \n
+            \n •	Comprovante de pagamento da Contribuição Sindical Patronal;
+            \n
+            \n •	- CPF do Responsável Legal (formalmente constituído);
+            \n
+            \n •	 Identidade e CPF do Responsável Técnico;
+            \n
+            \n •	Comprovação de 3 anos de experiência do responsável técnico ou comprovante da aprovação em curso específico, conforme a resolução ANTT nº 3056/2009;
+            \n
+            \n •	- CPF dos Sócios da empresa ou dos cooperados;
+            \n
+            \n •	- CPF do Diretor (caso houver);
+            \n
+            \n •	- CRLV comprovando a propriedade ou arrendamento de no mínimo um veículo de carga da categoria “aluguel”, com capacidade de carga útil igual ou superior a 500 quilos, registrado em seu nome no órgão de trânsito;
+            \n
+            \n •	- Relação das Filiais com seus respectivos CNPJ (caso houver).
+            \n
+            \n A Comprovação dos 3 anos de experiência do responsável técnico na atividade poderá ser efetuada mediante apresentação de pelo menos um dos seguintes documentos: Contrato Social da Empresa ou Estatuto da Cooperativa, Carteira de Trabalho e Previdência Social - CTPS; Certificado de Registro no RNTRC na categoria TAC.
+            \n
+            \n No caso de profissionais autônomos, não-formais, a documentação necessária para realizar o registro é:
+            \n
+            \n DOCUMENTAÇÃO NECESSÁRIA
+            \n
+            \n •	Documento de Identidade;
+            \n
+            \n •	Comprovante de Inscrição e Situação Cadastral - CPF ativo;
+            \n
+            \n •	Comprovante de pagamento da Contribuição Sindical Anual;
+            \n
+            \n •	Comprovação de 3 anos de experiência na atividade ou comprovante da aprovação em curso específico, conforme a resolução ANTT nº 3056/2009 e alterações;
+            \n
+            \n •	Comprovante de residência;
+            \n
+            \n •	CRLV comprovando a propriedade, copropriedade ou arrendamento de no mínimo um veículo de carga da categoria “aluguel”, com capacidade de carga útil igual ou superior a 500 quilos, registrado em seu nome no órgão de trânsito.
+            \n
+            \n Ressalta-se que a Comprovação dos três (03) anos de experiência na atividade poderá ser efetuada mediante apresentação de pelo menos um dos seguintes documentos: Carteira de Trabalho e Previdência Social - CTPS; Comprovação de Contribuinte individual junto ao INSS na qualidade de motorista profissional; certificado de registro como TAC no RNTRC.
+            \n
+            \n Ainda assim, não deixa de constatar que motoristas que possuem os veículos que comportem pequenas cargas, não usem tal documentação ou possua conhecimento com relação a RNTRC.
+"
+        android:textColor="#333333"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+</androidx.constraintlayout.widget.ConstraintLayout>

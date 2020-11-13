@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "123928202644",
+    "firebase_url": "https://camf-8e3e1.firebaseio.com",
+    "project_id": "camf-8e3e1",
+    "storage_bucket": "camf-8e3e1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:123928202644:android:b6a7da6f6cd1aa85bd1381",
+        "android_client_info": {
+          "package_name": "com.projeto.camfexpress"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "123928202644-ebvc4gb7lk4ut5pcnm232tgs8ffttkde.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.projeto.camfexpress",
+            "certificate_hash": "1d794a08cffd366deebb0f5b1d8c1a6a766e47a0"
+          }
+        },
+        {
+          "client_id": "123928202644-0si3savukqkbft3541cjm0gk365mg718.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBhtwQktUHyLKT40w0Gq4ZdOJoA1hyVeA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "123928202644-0si3savukqkbft3541cjm0gk365mg718.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

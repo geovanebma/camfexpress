@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Camf Express</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="titulo_cadastro">Cadastrar uma conta</string>
+    <string name="titulo_login">Acessar minha conta</string>
+    <string name="title_activity_corrida">CorridaActivity</string>
+    <string name="padrao_cliente">Cadastro Cliente</string>
+    <string name="padrao_motorista">Cadastro Motorista</string>
+    <string name="padrao_numero">Verificar Número</string>
+    <string name="padrao_sms">Verificar SMS</string>
+    <string name="title_activity_cliente">ClienteActivity</string>
+    <string name="title_activity_cliente2">ClienteActivity2</string>
+    <string name="title_termos_condicoes">Termos e Condições</string>
+</resources>
